@@ -24,9 +24,9 @@ public class CarController {
         throw new NoSuchElementException("No Cars found");
     }
 
-    @ExceptionHandler(NoSuchBrandException.class)
+/*    @ExceptionHandler(NoSuchBrandException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorMessage handleNoSuchElementException(NoSuchBrandException exception) {
         return new ErrorMessage(exception.getMessage(), LocalDateTime.now());
-    }
+    }*/
 }

@@ -24,10 +24,10 @@ public class AnimalController {
     String getAllAnimals() {
         throw new NoSuchElementException("No Animals found");
     }
-
+/*
     @ExceptionHandler(NoSuchSpeciesException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorMessage handleNoSuchElementException(NoSuchSpeciesException exception) {
         return new ErrorMessage(exception.getMessage(), LocalDateTime.now());
-    }
+    }*/
 }
