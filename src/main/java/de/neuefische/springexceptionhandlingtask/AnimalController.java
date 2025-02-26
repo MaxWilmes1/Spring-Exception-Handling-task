@@ -25,7 +25,7 @@ public class AnimalController {
     }
 
     @ExceptionHandler(OnlyDogAllowedException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorMessage handleOnlyDogAllowedException(OnlyDogAllowedException exception) {
         return new ErrorMessage(exception.getMessage(), exception.getErrorType(), LocalDateTime.now());
     }

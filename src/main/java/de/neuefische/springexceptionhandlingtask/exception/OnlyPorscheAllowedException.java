@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.NoSuchElementException;
 
 @Getter
-public class OnlyPorscheAllowedException extends NoSuchElementException {
+public class OnlyPorscheAllowedException extends IllegalArgumentException {
 
     public final String errorType;
 

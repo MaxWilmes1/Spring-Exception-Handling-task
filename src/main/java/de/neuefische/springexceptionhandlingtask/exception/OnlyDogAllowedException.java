@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.NoSuchElementException;
 
 @Getter
-public class OnlyDogAllowedException extends NoSuchElementException {
+public class OnlyDogAllowedException extends IllegalArgumentException {
 
     private final String errorType;
 

@@ -17,4 +17,11 @@ public class GlobalExceptionHandler {
     public ErrorMessage handleNoSuchElementException(NoSuchElementException exception) {
         return new ErrorMessage(exception.getMessage(), "NoSuchElementException", LocalDateTime.now());
     }
+
+    // Allgemeine Behandlung für alle anderen Ausnahmen
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorMessage handleGenericException(Exception exception) {
+        return new ErrorMessage(exception.getMessage(), exception.getClass().getSimpleName(), LocalDateTime.now());
+    }
 }

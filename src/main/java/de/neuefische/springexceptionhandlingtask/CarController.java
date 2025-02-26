@@ -25,7 +25,7 @@ public class CarController {
     }
 
     @ExceptionHandler(OnlyPorscheAllowedException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorMessage handleOnlyPorscheAllowedException(OnlyPorscheAllowedException exception) {
         return new ErrorMessage(exception.getMessage(), exception.errorType, LocalDateTime.now());
     }
