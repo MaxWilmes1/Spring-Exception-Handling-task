@@ -1,7 +1,6 @@
 package de.neuefische.springexceptionhandlingtask;
 
-import de.neuefische.springexceptionhandlingtask.exception.NoSuchBrandException;
-import de.neuefische.springexceptionhandlingtask.exception.NoSuchSpeciesException;
+import de.neuefische.springexceptionhandlingtask.exception.OnlyDogAllowedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +14,7 @@ public class AnimalController {
     @GetMapping("{species}")
     String getAnimalSpecies(@PathVariable String species) {
         if (!species.equals("dog")) {
-            throw new NoSuchSpeciesException("Only 'dog' is allowed");
+            throw new OnlyDogAllowedException("Only 'dog' is allowed");
         }
         return species;
     }
@@ -24,10 +23,10 @@ public class AnimalController {
     String getAllAnimals() {
         throw new NoSuchElementException("No Animals found");
     }
-/*
-    @ExceptionHandler(NoSuchSpeciesException.class)
+
+    @ExceptionHandler(OnlyDogAllowedException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorMessage handleNoSuchElementException(NoSuchSpeciesException exception) {
-        return new ErrorMessage(exception.getMessage(), LocalDateTime.now());
-    }*/
+    public ErrorMessage handleOnlyDogAllowedException(OnlyDogAllowedException exception) {
+        return new ErrorMessage(exception.getMessage(), exception.getErrorType(), LocalDateTime.now());
+    }
 }

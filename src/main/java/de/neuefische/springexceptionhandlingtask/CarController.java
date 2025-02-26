@@ -1,6 +1,6 @@
 package de.neuefische.springexceptionhandlingtask;
 
-import de.neuefische.springexceptionhandlingtask.exception.NoSuchBrandException;
+import de.neuefische.springexceptionhandlingtask.exception.OnlyPorscheAllowedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ public class CarController {
     @GetMapping("{brand}")
     String getCarBrand(@PathVariable String brand) {
         if (!brand.equals("porsche")) {
-            throw new NoSuchBrandException("Only 'porsche' allowed");
+            throw new OnlyPorscheAllowedException("Only 'porsche' allowed");
         }
         return brand;
     }
@@ -24,9 +24,9 @@ public class CarController {
         throw new NoSuchElementException("No Cars found");
     }
 
-/*    @ExceptionHandler(NoSuchBrandException.class)
+    @ExceptionHandler(OnlyPorscheAllowedException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorMessage handleNoSuchElementException(NoSuchBrandException exception) {
-        return new ErrorMessage(exception.getMessage(), LocalDateTime.now());
-    }*/
+    public ErrorMessage handleOnlyPorscheAllowedException(OnlyPorscheAllowedException exception) {
+        return new ErrorMessage(exception.getMessage(), exception.errorType, LocalDateTime.now());
+    }
 }

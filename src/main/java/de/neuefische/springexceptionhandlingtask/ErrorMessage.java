@@ -5,6 +5,7 @@ import java.util.NoSuchElementException;
 
 public record ErrorMessage (
         String message,
+        String exceptionType,
         LocalDateTime timestamp
 ) {
 }
